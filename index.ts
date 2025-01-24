@@ -1,17 +1,13 @@
 const HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
-};
-
-const indexFile = await Bun.file('./index.html').text(),
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+  },
+  indexFile = await Bun.file('./index.html').text(),
   scriptFile = await Bun.file('./script.js').text();
 
 Bun.serve({
   development: process.env.NODE_ENV == 'development',
   port: process.env.PORT ?? 8080,
-  static: {
-    '/': new Response(indexFile, { headers: { 'Content-Type': 'text/html' } })
-  },
   fetch: async (req) => {
     switch (req.method) {
       case 'GET':
@@ -23,7 +19,7 @@ Bun.serve({
                 'Cache-Control': 'max-age=604800, immutable'
               }
             })
-          : Response.redirect('/');
+          : new Response(indexFile, { headers: { 'Content-Type': 'text/html' } });
       case 'POST':
         try {
           const result = await fetch(await req.json());
