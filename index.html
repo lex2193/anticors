@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>AntiCORS</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        background-color: #222;
+        color: #ddd;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      h1 {
+        font-size: 3em;
+        text-shadow: 3px 3px 3px #888;
+      }
+      a {
+        color: #ddd;
+      }
+      pre {
+        padding: 1em;
+        border: 1px solid #ddd;
+        font-family: Consolas;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>AntiCORS</h1>
+    <p>
+      <span>Include the </span>
+      <a href="script.js">script.js</a>
+    </p>
+    <pre>const data = await anticors({ url: 'https://...' }); // Fetch parameters</pre>
+  </body>
+</html>
